@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q-Learning Self-Driving Car (Three.js)</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: system-ui, sans-serif;
+        background: #0d1117;
+        color: #e6edf3;
+      }
+      #ui {
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 10;
+        max-width: 360px;
+        padding: 14px 16px;
+        background: rgba(22, 27, 34, 0.92);
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      #ui h1 {
+        margin: 0 0 8px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+      #ui p { margin: 0 0 8px; }
+      #ui label { display: block; margin-top: 10px; color: #8b949e; }
+      #ui input[type="range"] { width: 100%; }
+      #stats { font-variant-numeric: tabular-nums; margin-top: 10px; }
+      button {
+        margin-top: 10px;
+        margin-right: 8px;
+        padding: 6px 12px;
+        border-radius: 6px;
+        border: 1px solid #30363d;
+        background: #21262d;
+        color: #e6edf3;
+        cursor: pointer;
+      }
+      button:hover { background: #30363d; }
+      .ego-tag {
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: rgba(13, 17, 23, 0.92);
+        border: 2px solid #3fb950;
+        color: #3fb950;
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        white-space: nowrap;
+      }
+      .hint {
+        margin: 8px 0 0;
+        font-size: 11px;
+        color: #8b949e;
+      }
+      .zoom-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .zoom-row button {
+        margin-top: 0;
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ui">
+      <h1>Highway MDP + Q-learning (108 states)</h1>
+      <p>
+        <code>S = (lane, speed, front, traffic density)</code> on a 4-lane road. NPCs follow noisy car-following + random lane changes; density resamples each episode (low / med / high).
+        Rewards encourage safe headway, inner lanes when clear, smooth lane changes, and light speed when it is safe.
+      </p>
+      <p class="hint">
+        <strong>Your car:</strong> bright blue body, <strong style="color:#3fb950">green ring</strong> on the road, and a <strong>YOU</strong> tag above it (the RL agent; other cars are traffic).
+      </p>
+      <label>ε (exploration) <span id="epsVal"></span></label>
+      <input type="range" id="epsilon" min="0" max="100" value="25" />
+      <label>α (learning rate) <span id="alphaVal"></span></label>
+      <input type="range" id="alpha" min="5" max="100" value="10" />
+      <label>γ (discount) <span id="gammaVal"></span></label>
+      <input type="range" id="gamma" min="80" max="100" value="90" />
+      <label>Env steps / second (how fast the car moves) <span id="speedVal"></span></label>
+      <input type="range" id="speed" min="1" max="120" value="6" />
+      <label>Camera distance (zoom) <span id="zoomVal"></span></label>
+      <input type="range" id="zoom" min="8" max="85" value="32" />
+      <div class="zoom-row">
+        <button type="button" id="zoomIn">Zoom in</button>
+        <button type="button" id="zoomOut">Zoom out</button>
+      </div>
+      <p class="hint">Scroll wheel zooms; drag rotates view. Slider matches distance to the look target.</p>
+      <div>
+        <button type="button" id="toggleTrain">Pause training</button>
+        <button type="button" id="resetQ">Reset Q-table</button>
+      </div>
+      <div id="stats"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
