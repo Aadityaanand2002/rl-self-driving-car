@@ -2,7 +2,16 @@
 
 A browser-based reinforcement learning project where a tabular Q-learning agent learns to drive an ego vehicle on a 4-lane highway inside a custom traffic simulator rendered with Three.js.
 
-![Project Screenshot](./s1.png,)
+## Screenshots
+
+### Environment View
+![Screenshot 1](./s1.png)
+
+### Training Dashboard
+![Screenshot 2](./s2.png)
+
+### Learned Driving Behavior
+![Screenshot 3](./s3.png)
 
 ## Highlights
 
@@ -15,8 +24,7 @@ A browser-based reinforcement learning project where a tabular Q-learning agent 
 
 ## Demo
 
-- Live site: `https://YOUR_USERNAME.github.io/rl-self-driving-car/`
-- Replace `YOUR_USERNAME` with your GitHub username after deployment.
+- Live site: `https://aadityaanand2002.github.io/rl-self-driving-car/`
 
 ## Overview
 
