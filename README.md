@@ -2,7 +2,7 @@
 
 A browser-based reinforcement learning project where a tabular Q-learning agent learns to drive an ego vehicle on a 4-lane highway inside a custom traffic simulator rendered with Three.js.
 
-![Project Screenshot](./screenshot.png)
+![Project Screenshot](./s1.png,)
 
 ## Highlights
 
