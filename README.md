@@ -87,6 +87,12 @@ It is especially useful for:
 
 ---
 
+## 📄 Project Report
+
+- [View Project Report PDF](./docs/SelfDrivingCar.pdf)
+
+---
+
 ## 🧠 Reinforcement Learning Design
 
 The environment models a 4-lane highway where the ego vehicle must take driving decisions in a changing traffic context. At each step, the agent observes a simplified state, selects an action, receives a reward, and updates the Q-table.
